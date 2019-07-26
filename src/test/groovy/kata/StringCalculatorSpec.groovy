@@ -14,7 +14,8 @@ class StringCalculatorSpec extends Specification{
 			where:
 			numbers               ||  result
 			 ""  			      ||  0
-			"1"					  ||  1			
+			"1"					  ||  1
+			"1,2"				  ||  3		
 	}
 
 }
