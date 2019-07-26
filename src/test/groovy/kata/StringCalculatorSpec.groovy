@@ -11,9 +11,9 @@ class StringCalculatorSpec extends Specification{
 		given: 'Empty string'
 		  def numbers = "";
 		when: 'StringCalculator.add(numbers) is called'
-			def retVal = StringCalculator.add(numbers)
+			String retVal = StringCalculator.add(numbers)
 		then: 'It should return 0'
-			retVal=='0';
+			retVal == "0";
 	}
 
 }
