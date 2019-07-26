@@ -8,12 +8,13 @@ import spock.lang.Specification
 class StringCalculatorSpec extends Specification{
 		
 	def'API to calculate string numbers'(){
-		given: 'Empty string'
-		  def numbers = "";
-		when: 'StringCalculator.add(numbers) is called'
-			String retVal = StringCalculator.add(numbers)
-		then: 'It should return 0'
-			retVal == "0";
+				
+			expect:
+			result == StringCalculator.add(numbers)
+			where:
+			numbers               ||  result
+			 ""  			      ||  0
+			"1"					  ||  1			
 	}
 
 }
