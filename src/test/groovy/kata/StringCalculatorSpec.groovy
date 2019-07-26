@@ -17,6 +17,6 @@ class StringCalculatorSpec extends Specification{
 			"1"					  ||  1
 			"1,2"				  ||  3		
 			"1,2,3"				  ||  6
-	}
+	} 
 
 }
