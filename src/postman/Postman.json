@@ -1,65 +1,177 @@
-openapi: 3.0.0
-info:
-  version: 2.0
-  title: Ver 2.0
-servers:
-  - url: 'http://localhost:3000'
-paths:
-  /user:
-    get:
-      summary: 'Sample endpoint: Returns details about a particular user'
-      operationId: listUser
-      tags:
-        - user
-      parameters:
-        - name: id
-          in: query
-          description: ID of the user
-          required: true
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: 'Sample response: Details about a user by ID'
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-components:
-  schemas:
-    User:
-      type: object
-      required:
-        - id
-        - name
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        tag:
-          type: string
-    Error:
-      type: object
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Content distribution",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:2080/mobiledoc/jsp/contentdistribution/servicejsp",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/importProgressnoteCategoryService.jsp": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "API to get Progress note category from Content distribution Hub",
+        "description": "This endpoint isjsp/contentdistribution/servicejsp/importProgressnoteCategoryService.jsp. This endpoint is for get Category list publshed from CD hub for this APU.\r\n\r\nParameters:\r\n\r\naction (String): 'getCategoryList\r\n'\r\n\r\ncategory: Name of Category for which you want list like 'HPI,EXAM','ROS'\r\n\r\nThe response will include the list of Categories for requested section with version number.\r\n\r\nSample endpoint with parameters:\r\n\r\nmobiledoc/jsp/contentdistribution/servicejsp/importProgressnoteCategoryService.jsp?action=getCategoryList\r\n&category=HPI\r\n\r\n",
+        "operationId": "APItogetProgressnotecategoryfromContentdistributionHub",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Action to get category list",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "getCategoryList"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Progress note Section for which you need category list",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "HPI"
+            }
+          },
+          {
+            "name": "X-CSRF-TOKEN",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "786b2b9d-8ca6-49ec-a623-0561782e5a9a"
+            }
+          },
+          {
+            "name": "Cookie",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "89ac9cdf-c2b6-4de0-9c5d-512392ee0cc3; JSESSIONID=9BD49B51837BE566831F9BB9F74DE473"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/importBhItemService.jsp": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "API for getting BH data from content distribution server",
+        "description": "API for getting BH data from CD sever\r\n\r\nhttp://localhost:2080/mobiledoc/jsp/contentdistribution/servicejsp/importBhItemService.jsp?action=getBhItemList&filter=all&bhType=objectives",
+        "operationId": "APIforgettingBHdatafromcontentdistributionserver",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "getBhItemList"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "all"
+            }
+          },
+          {
+            "name": "bhType",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "objectives"
+            }
+          },
+          {
+            "name": "X-CSRF-TOKEN",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "e4e92afb-066e-4504-8db5-e6abed5f2682"
+            }
+          },
+          {
+            "name": "Cookie",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "89ac9cdf-c2b6-4de0-9c5d-512392ee0cc3; JSESSIONID=E3B492A18179239AD5F011C7F7CBCE2D"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "httpBasic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "httpBasic": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
